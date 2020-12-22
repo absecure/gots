@@ -29,22 +29,7 @@ func Fuzz(data byte[]) int {
 		return
 	}
 	printPat(pat)
-	fmt.Println()
 	return 0
-}
-
-func printPmt(pn uint16, pmt psi.PMT) {
-	fmt.Printf("Program #%v PMT\n", pn)
-	fmt.Printf("\tPIDs %v\n", pmt.Pids())
-	fmt.Println("\tElementary Streams")
-
-	for _, es := range pmt.ElementaryStreams() {
-		fmt.Printf("\t\tPid %v: StreamType %v: %v\n", es.ElementaryPid(), es.StreamType(), es.StreamTypeDescription())
-
-		for _, d := range es.Descriptors() {
-			fmt.Printf("\t\t\t%+v\n", d)
-		}
-	}
 }
 
 func printPat(pat psi.PAT) {
